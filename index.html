@@ -122,8 +122,21 @@ h2.in:after{width:min(240px,50%)}
 @keyframes ctp{0%{box-shadow:0 0 0 0 rgba(255,74,43,.6)}100%{box-shadow:0 0 0 22px rgba(255,74,43,0)}}
 .hero2 small{margin-top:14px;color:var(--alu);font-size:14px}
 @media(prefers-reduced-motion:reduce){.cta{animation:none}}
+.top{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(24px,6vw,96px);background:radial-gradient(ellipse at 75% 45%,#1b3f86 0%,transparent 55%),var(--navy);overflow:hidden}
+.pillt{display:inline-flex;gap:10px;align-items:center;border:1px solid rgba(195,205,216,.35);border-radius:999px;padding:6px 16px;font-size:14px;color:var(--alu);margin-bottom:22px}.pillt i{width:8px;height:8px;border-radius:50%;background:#8bd34b}
+.top h1{margin:0;font-weight:800;font-size:clamp(54px,8.5vw,128px);line-height:.88;letter-spacing:-.035em}
+.top p{max-width:40ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,20px);color:var(--alu)}.by{margin-top:22px;font-size:14px;color:var(--alu);opacity:.85}
+.shot{position:relative;perspective:1000px}.shot:before{content:"";position:absolute;inset:-8% -6%;background:radial-gradient(closest-side,rgba(255,74,43,.35),transparent);filter:blur(30px)}
+.frame{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.25);box-shadow:0 30px 70px rgba(0,0,0,.55);transform:rotateY(-8deg) rotateX(3deg);transition:transform .5s;aspect-ratio:4/3;background:#0b1830}.shot:hover .frame{transform:none}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block}
+.frame:after{content:"";position:absolute;left:0;right:0;height:3px;top:0;background:var(--laser);box-shadow:0 0 18px 4px rgba(255,74,43,.7);animation:scan 4.5s ease-in-out infinite alternate}@keyframes scan{to{top:calc(100% - 3px)}}
+.tag{position:absolute;background:#fff;color:#0b1d4d;font-weight:800;font-size:14px;padding:8px 16px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.35);animation:fl 5s ease-in-out infinite}.tag.t1{left:-14px;bottom:16%}.tag.t2{right:-10px;top:8%;animation-delay:-2.5s}@keyframes fl{50%{transform:translateY(-8px)}}
+.cta-sec{min-height:80svh}.cta-sec h2{font-size:clamp(48px,9vw,120px);line-height:.9;margin:0}.cta-sec p{max-width:36ch}
+@media(max-width:820px){.top{grid-template-columns:1fr}.tag.t1{left:8px}.tag.t2{right:8px}.frame{transform:none}}
+@media(prefers-reduced-motion:reduce){.frame:after,.tag{animation:none}}
 </style></head><body>
-<section class="hero2" id="h2"><h1>Laser<br>CNC</h1><p>A rigid cutting and engraving machine, grown out of a wooden pen plotter.</p><a class="cta" href="3d.html">Explore the 3D machine</a><small>Rotate it, explode it, and engrave your own text.</small></section>
+<section class="top"><div><span class="pillt"><i></i>Faculty of Engineering, Damanhour University</span><h1>Laser<br>CNC</h1><p>A student-built laser CNC that cuts and engraves wood, acrylic, leather and soft metals. Designed in SolidWorks, driven by an Arduino running GRBL.</p><div class="by">Ahmed Galal · Yousef Ibrahem · Mustafa Mahmoud</div></div>
+<div class="shot"><div class="frame"><img id="i2" alt="Our laser CNC engraving wood with smoke rising" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div><span class="tag t1">Wood · Acrylic · Leather</span><span class="tag t2">G-code to laser</span></div></section>
 
 <div class="marq" aria-hidden="true"><div><span>Wood</span><span>Acrylic</span><span>Leather</span><span>Soft metals</span><span>Wood</span><span>Acrylic</span><span>Leather</span><span>Soft metals</span><span>Wood</span><span>Acrylic</span><span>Leather</span><span>Soft metals</span><span>Wood</span><span>Acrylic</span><span>Leather</span><span>Soft metals</span></div></div>
 <section class="paper"><div class="wrap">
@@ -161,6 +174,7 @@ h2.in:after{width:min(240px,50%)}
 <div><h3>Cut</h3><p>Commands go to the stepper motors and the laser module.</p><code>M3 S600 · M5</code></div></div>
 </div></section>
 
+<section class="hero2 cta-sec"><h2>Explore the<br>3D machine</h2><p>Rotate it, pull it apart, and watch the laser engrave your own text.</p><a class="cta" href="3d.html">Open the 3D machine</a></section>
 <section class="paper"><div class="wrap"><h2>The team</h2><p class="lead">Move your mouse over us. We are watching the cursor.</p><div class="crew" id="crew"></div></div></section>
 <footer>Faculty of Engineering, Damanhour University. Laser CNC engineering project.</footer>
 
@@ -197,4 +211,4 @@ addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;upd()},{passive:tru
 addEventListener('scroll',upd,{passive:true});
 E.forEach(f=>f.addEventListener('pointerdown',()=>{f._t=performance.now()+2500;upd();setTimeout(upd,2600)}));
 })();
-</script><script>(function(){var i=document.getElementById("i1"),h=document.getElementById("h2");if(i&&h)h.style.setProperty("--bg","url("+i.src+")")})();</script></body></html>
+</script><script>(function(){var i=document.getElementById("i1");if(!i)return;var s=i.src;document.getElementById("i2").src=s;document.querySelectorAll(".cta-sec").forEach(function(h){h.style.setProperty("--bg","url("+s+")")})})();</script></body></html>
